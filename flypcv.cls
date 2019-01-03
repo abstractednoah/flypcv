@@ -8,9 +8,28 @@
 
 \makeatletter
 
-%%% geometry ----------------------------------------------------------------------------
-\RequirePackage{fullpage}
+%%% geometry, footer -------------------------------------------------------------------
+
+% remove parindent
 \setlength\parindent{0pt}
+
+% set margin, footer geometry
+\RequirePackage{geometry}
+
+\setlength{\footskip}{0.2in}
+\geometry{margin=0.7in}
+
+% configure footer
+\RequirePackage{fancyhdr, lastpage}
+
+\pagestyle{fancyplain}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancyhf{}
+\fancyfoot[R]{\sffamily\scriptsize \thepage\ of\ \pageref{LastPage}} % page number
+\fancyfoot[L]{\sffamily\itshape\scriptsize curriculum vitae} % "c.v." text
+
 %%%%%%
 
 %%% cvtitle -----------------------------------------------------------------------------
@@ -24,9 +43,13 @@
 \newcommand{\location}[1]{\renewcommand{\@location}{#1}}
 \newcommand{\contact}[1]{\renewcommand{\@contact}{#1}}
 
+% title geometry
+\newlength{\cvtitleheight}
+\setlength{\cvtitleheight}{0.5in}
+
 % use \makecvtitle to place the title within document
 \newcommand{\makecvtitle}{
-  \begin{minipage}[t][0.1\textheight][c]{0.5\textwidth}
+  \begin{minipage}[t][\cvtitleheight][c]{0.5\textwidth}
     \flushleft{{\Huge\sffamily\bfseries
       \@author
     }}
@@ -34,7 +57,7 @@
       \@title
     }}
   \end{minipage}
-  \begin{minipage}[t][0.1\textheight][c]{0.5\textwidth}
+  \begin{minipage}[t][\cvtitleheight][c]{0.5\textwidth}
     \flushright{\sffamily
       \@location\\
       \@contact
