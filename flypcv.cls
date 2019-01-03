@@ -16,6 +16,17 @@
 \RequirePackage[colorlinks, urlcolor=cyan, linkcolor=black]{hyperref}
 %%%%%%
 
+%%% conditional -------------------------------------------------------------------------
+
+\RequirePackage{xifthen}
+
+% thisifthat - expand #1 if #2 is not empty
+\newcommand{\thisifthat}[2]{%%
+  \ifthenelse{\isempty{#2}}{}{#1}%%
+}
+
+%%%%%%
+
 %%% geometry, footer --------------------------------------------------------------------
 
 % remove parindent, parskip
@@ -122,7 +133,13 @@
 \newcommand{\defaultmetaformat}[1]{\renewcommand{\@defaultmetaformat}{#1}}
 
 % \cvitem{item}{info}{meta}{delim}{infopunct}
-\newcommand{\cvitem}[5]{\par#1#4#2#5 \hfill {\@defaultmetaformat#3}}
+\newcommand{\cvitem}[5]{%%
+  \par%%
+  #1%%
+  \thisifthat{#4}{#2}#2\thisifthat{#5}{#2}%%
+  \thisifthat{\hfill}{#3}%%
+  {\@defaultmetaformat#3}%%
+}
 
 %%%%%%
 
@@ -133,7 +150,8 @@
 \newcommand{\newcvitem}[6]{%%
   \expandafter\newcommand\csname#1\endcsname[3]{%%
     \vspace{#6}%%
-    \cvitem{{#2##1}}{{#3##2}}{{##3}}{#4}{#5}%%
+    \cvitem{{#2##1}}{{#3##2}}{##3}%%
+      {\thisifthat{#4}{##2}}{\thisifthat{#5}{##2}}%%
   }
 }
 
@@ -145,7 +163,7 @@
 \newcvitem{headcvitem}{\bfseries}{}{ | }{}{\hitemvspace}
 
 % detailcvitem - for detail items under headcvitems
-\newcvitem{detailcvitem}{}{}{}{}{0pt}
+\newcvitem{detailcvitem}{}{\itshape}{:\ }{}{0pt}
 
 % collectcvitem - for a brief one-line list of items with emphasised header
 \newcvitem{collectcvitem}{\bfseries}{}{\ }{}{\hitemvspace}
@@ -155,6 +173,9 @@
   \vspace{\hitemvspace}\par%%
   {\bfseries#1}\ {\small\itshape#2}%%
 }
+
+% referencecvitem
+\newcvitem{referencecvitem}{\rmfamily}{\itshape}{,\ }{}{\hitemvspace}
 
 %%%%%%
 
