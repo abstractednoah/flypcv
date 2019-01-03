@@ -8,7 +8,11 @@
 
 \makeatletter
 
-%%% geometry, footer -------------------------------------------------------------------
+%%% hyperlinks --------------------------------------------------------------------------
+\RequirePackage[colorlinks, urlcolor=cyan, linkcolor=black]{hyperref}
+%%%%%%
+
+%%% geometry, footer --------------------------------------------------------------------
 
 % remove parindent
 \setlength\parindent{0pt}
@@ -35,13 +39,16 @@
 %%% cvtitle -----------------------------------------------------------------------------
 
 % supported header parameters
-%   \author, \title, \location, \contact
+%   \author, \title, \location, \email, \phone
 \author{Logan Daniel}
 \title{mathematician, educator.}
 \newcommand{\@location}{New York City, NY, USA}
-\newcommand{\@contact}{ldan@gmail.com | 123/456-7890}
+\newcommand{\@email}{ldan@gmail.com}
+\newcommand{\@phone}{123/456-7890}
 \newcommand{\location}[1]{\renewcommand{\@location}{#1}}
 \newcommand{\contact}[1]{\renewcommand{\@contact}{#1}}
+\newcommand{\email}[1]{\renewcommand{\@email}{#1}}
+\newcommand{\phone}[1]{\renewcommand{\@phone}{#1}}
 
 % title geometry
 \newlength{\cvtitleheight}
@@ -60,7 +67,7 @@
   \begin{minipage}[t][\cvtitleheight][c]{0.5\textwidth}
     \flushright{\sffamily
       \@location\\
-      \@contact
+      \href{mailto:\@email}{\@email} | \@phone
     }
   \end{minipage}
 }
