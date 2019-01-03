@@ -31,8 +31,8 @@
 \renewcommand{\footrulewidth}{0pt}
 
 \fancyhf{}
-\fancyfoot[R]{\sffamily\scriptsize \thepage\ of\ \pageref{LastPage}} % page number
-\fancyfoot[L]{\sffamily\itshape\scriptsize curriculum vitae} % "c.v." text
+\fancyfoot[R]{\sffamily\scriptsize \thepage\ \textit{of}\ \pageref{LastPage}}
+\fancyfoot[L]{\sffamily\itshape\scriptsize curriculum vitae}
 
 %%%%%%
 
