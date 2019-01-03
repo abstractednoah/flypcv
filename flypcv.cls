@@ -8,14 +8,25 @@
 
 \makeatletter
 
+%%% default font ------------------------------------------------------------------------
+\renewcommand{\familydefault}{\sfdefault}
+%%%%%%
+
 %%% hyperlinks --------------------------------------------------------------------------
 \RequirePackage[colorlinks, urlcolor=cyan, linkcolor=black]{hyperref}
 %%%%%%
 
 %%% geometry, footer --------------------------------------------------------------------
 
-% remove parindent
+% remove parindent, parskip
 \setlength\parindent{0pt}
+\setlength{\parskip}{0pt}
+
+% set vertical lengths (space above said object)
+\newlength{\secvspace}
+\newlength{\hitemvspace}
+\setlength{\secvspace}{0pt}
+\setlength{\hitemvspace}{3.5pt}
 
 % set margin, footer geometry
 \RequirePackage{geometry}
@@ -31,8 +42,8 @@
 \renewcommand{\footrulewidth}{0pt}
 
 \fancyhf{}
-\fancyfoot[R]{\sffamily\scriptsize \thepage\ \textit{of}\ \pageref{LastPage}}
-\fancyfoot[L]{\sffamily\itshape\scriptsize curriculum vitae}
+\fancyfoot[R]{\scriptsize \thepage\ \textit{of}\ \pageref{LastPage}}
+\fancyfoot[L]{\itshape\scriptsize curriculum vitae}
 
 %%%%%%
 
@@ -57,7 +68,7 @@
 % use \makecvtitle to place the title within document
 \newcommand{\makecvtitle}{
   \begin{minipage}[t][\cvtitleheight][c]{0.5\textwidth}
-    \flushleft{{\Huge\sffamily\bfseries
+    \flushleft{{\Huge\bfseries
       \@author
     }}
     \vspace{-5pt}\flushleft{{\itshape
@@ -65,7 +76,7 @@
     }}
   \end{minipage}
   \begin{minipage}[t][\cvtitleheight][c]{0.5\textwidth}
-    \flushright{\sffamily
+    \flushright{
       \@location\\
       \href{mailto:\@email}{\@email} | \@phone
     }
@@ -84,7 +95,7 @@
 
 % format section
 \titleformat{\section}
-  {\Large\sffamily\bfseries\uppercase}
+  {\vspace{\secvspace}\Large\bfseries\uppercase}
   {}
   {\sectionsep}
   {}[\titlerule]
@@ -99,18 +110,23 @@
 %%% cvitem ------------------------------------------------------------------------------
 % generic line item with item, delim, info, and metadata.
 
-% \cvitem{item}{info}{meta}{delim}
-\newcommand{\cvitem}[4]{#1#4\ #2 \hfill #3}
+% default metaformat (given default since that column looks weird if not uniform)
+\newcommand{\@defaultmetaformat}{\rmfamily}
+\newcommand{\defaultmetaformat}[1]{\renewcommand{\@defaultmetaformat}{#1}}
+
+% \cvitem{item}{info}{meta}{delim}{infopunct}
+\newcommand{\cvitem}[5]{\par#1#4#2#5 \hfill {\@defaultmetaformat#3}}
 
 %%%%%%
 
 %%% custom cvitem -----------------------------------------------------------------------
 % format a custom cvitem
 
-% \newcvitem{name}{itemformat}{infoformat}{metaformat}{delim}
-\newcommand{\newcvitem}[5]{%%
+% \newcvitem{name}{itemformat}{infoformat}{delim}{infopunct}{vspace}
+\newcommand{\newcvitem}[6]{%%
   \expandafter\newcommand\csname#1\endcsname[3]{%%
-    \cvitem{{#2##1}}{{#3##2}}{{#4##3}}{#5}%%
+    \vspace{#6}%%
+    \cvitem{{#2##1}}{{#3##2}}{{##3}}{#4}{#5}%%
   }
 }
 
@@ -118,7 +134,11 @@
 
 %%% define cvitems ----------------------------------------------------------------------
 
+% headcvitem - for items that act as headers / major items
+\newcvitem{headcvitem}{\bfseries}{}{ | }{}{\hitemvspace}
 
+% detailcvitem - for detail items under headcvitems
+\newcvitem{detailcvitem}{}{}{}{}{0pt}
 
 %%%%%%
 
