@@ -30,7 +30,7 @@
 %%% geometry, footer --------------------------------------------------------------------
 
 % remove parindent, parskip
-\setlength\parindent{0pt}
+\setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 
 % set vertical lengths (space above said object)
@@ -120,8 +120,8 @@
 
 %%% the blirb --------------------------------------------------------------------------
 
-% blirb - a simple, flushleft, ital env for brief descriptions below main items
-\newcommand{\blirb}[1]{\flushleft{{\itshape#1}}}
+% blirb - a simple, ital par for brief descriptions below main items or as standalones
+\newcommand{\blirb}[1]{\par{\itshape#1}}
 
 %%%%%%
 
