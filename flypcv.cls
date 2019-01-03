@@ -84,10 +84,41 @@
 
 % format section
 \titleformat{\section}
-  {\large\sffamily\bfseries\uppercase}
+  {\Large\sffamily\bfseries\uppercase}
   {}
   {\sectionsep}
   {}[\titlerule]
+
+%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% cv features -------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% cvitem ------------------------------------------------------------------------------
+% generic line item with item, delim, info, and metadata.
+
+% \cvitem{item}{info}{meta}{delim}
+\newcommand{\cvitem}[4]{#1#4\ #2 \hfill #3}
+
+%%%%%%
+
+%%% custom cvitem -----------------------------------------------------------------------
+% format a custom cvitem
+
+% \newcvitem{name}{itemformat}{infoformat}{metaformat}{delim}
+\newcommand{\newcvitem}[5]{%%
+  \expandafter\newcommand\csname#1\endcsname[3]{%%
+    \cvitem{{#2##1}}{{#3##2}}{{#4##3}}{#5}%%
+  }
+}
+
+%%%%%%
+
+%%% define cvitems ----------------------------------------------------------------------
+
+
 
 %%%%%%
 
