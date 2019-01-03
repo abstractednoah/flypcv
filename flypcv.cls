@@ -74,5 +74,21 @@
 
 %%%%%%
 
+%%% section definition ------------------------------------------------------------------
+
+\RequirePackage{titlesec}
+
+% section geometry
+\newlength{\sectionsep}
+\setlength{\sectionsep}{8pt}
+
+% format section
+\titleformat{\section}
+  {\large\sffamily\bfseries\uppercase}
+  {}
+  {\sectionsep}
+  {}[\titlerule]
+
+%%%%%%
 
 \makeatother
