@@ -107,6 +107,13 @@
 %%% cv features -------------------------------------------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%% the blirb --------------------------------------------------------------------------
+
+% blirb - a simple, flushleft, ital env for brief descriptions below main items
+\newcommand{\blirb}[1]{\flushleft{{\itshape#1}}}
+
+%%%%%%
+
 %%% cvitem ------------------------------------------------------------------------------
 % generic line item with item, delim, info, and metadata.
 
@@ -139,6 +146,15 @@
 
 % detailcvitem - for detail items under headcvitems
 \newcvitem{detailcvitem}{}{}{}{}{0pt}
+
+% collectcvitem - for a brief one-line list of items with emphasised header
+\newcvitem{collectcvitem}{\bfseries}{}{\ }{}{\hitemvspace}
+
+% blirbcvitem - cvitem with blirb inline (not actually a true cvitem)
+\newcommand{\blirbcvitem}[2]{%%
+  \vspace{\hitemvspace}\par%%
+  {\bfseries#1}\ {\small\itshape#2}%%
+}
 
 %%%%%%
 
