@@ -8,27 +8,37 @@
 
 \makeatletter
 
-%%% reasonable margins %%%
+%%% geometry ----------------------------------------------------------------------------
 \RequirePackage{fullpage}
+\setlength\parindent{0pt}
 %%%%%%
 
-%%% cvtitle %%%
+%%% cvtitle -----------------------------------------------------------------------------
 
 % supported header parameters
 %   \author, \title, \location, \contact
-\author{Na M. E.}
-\title{Titl, E}
-\newcommand{\@location}{Locati, ON}
-\newcommand{\@contact}{name@dom.ain}
+\author{Logan Daniel}
+\title{mathematician, educator.}
+\newcommand{\@location}{New York City, NY, USA}
+\newcommand{\@contact}{ldan@gmail.com | 123/456-7890}
 \newcommand{\location}[1]{\renewcommand{\@location}{#1}}
 \newcommand{\contact}[1]{\renewcommand{\@contact}{#1}}
 
+% use \makecvtitle to place the title within document
 \newcommand{\makecvtitle}{
   \begin{minipage}[t][0.1\textheight][c]{0.5\textwidth}
-    \flushleft{{\sffamily\Huge \@author}\\\@title}
+    \flushleft{{\Huge\sffamily\bfseries
+      \@author
+    }}
+    \vspace{-5pt}\flushleft{{\itshape
+      \@title
+    }}
   \end{minipage}
   \begin{minipage}[t][0.1\textheight][c]{0.5\textwidth}
-    \flushright{\@location\\\@contact}
+    \flushright{\sffamily
+      \@location\\
+      \@contact
+    }
   \end{minipage}
 }
 
