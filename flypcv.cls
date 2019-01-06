@@ -35,9 +35,9 @@
 
 % set vertical lengths (space above said object)
 \newlength{\secvspace}
-\newlength{\hitemvspace}
+\newlength{\headvspace}
 \setlength{\secvspace}{0pt}
-\setlength{\hitemvspace}{3.5pt}
+\setlength{\headvspace}{3.5pt}
 
 % set margin, footer geometry
 \RequirePackage{geometry}
@@ -118,10 +118,10 @@
 %%% cv features -------------------------------------------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%% the blirb --------------------------------------------------------------------------
+%%% the blurb --------------------------------------------------------------------------
 
-% blirb - a simple, ital par for brief descriptions below main items or as standalones
-\newcommand{\blirb}[1]{\par{\itshape#1}}
+% blurb - a simple, ital par for brief descriptions below main items or as standalones
+\newcommand{\blurb}[1]{\par{\itshape#1}}
 
 %%%%%%
 
@@ -160,22 +160,22 @@
 %%% define cvitems ----------------------------------------------------------------------
 
 % headcvitem - for items that act as headers / major items
-\newcvitem{headcvitem}{\bfseries}{}{ | }{}{\hitemvspace}
+\newcvitem{headcvitem}{\bfseries}{}{ | }{}{\headvspace}
 
 % detailcvitem - for detail items under headcvitems
 \newcvitem{detailcvitem}{}{\itshape}{:\ }{}{0pt}
 
 % collectcvitem - for a brief one-line list of items with emphasised header
-\newcvitem{collectcvitem}{\bfseries}{}{\ }{}{\hitemvspace}
+\newcvitem{collectcvitem}{\bfseries}{}{\ }{}{\headvspace}
 
-% blirbcvitem - cvitem with blirb inline (not actually a true cvitem)
-\newcommand{\blirbcvitem}[2]{%%
-  \vspace{\hitemvspace}\par%%
+% blurbcvitem - cvitem with blurb in-line (not actually a true cvitem)
+\newcommand{\blurbcvitem}[2]{%%
+  \vspace{\headvspace}\par%%
   {\bfseries#1}\ {\small\itshape#2}%%
 }
 
 % referencecvitem
-\newcvitem{referencecvitem}{\rmfamily}{\itshape}{,\ }{}{\hitemvspace}
+\newcvitem{referencecvitem}{\rmfamily}{\itshape}{,\ }{}{\headvspace}
 
 %%%%%%
 
