@@ -13,7 +13,7 @@
 %%%%%%
 
 %%% hyperlinks --------------------------------------------------------------------------
-\RequirePackage[colorlinks, urlcolor=cyan, linkcolor=black]{hyperref}
+\RequirePackage[colorlinks, urlcolor=blue, linkcolor=black]{hyperref}
 %%%%%%
 
 %%% conditional -------------------------------------------------------------------------
