@@ -38,10 +38,10 @@
 \setlength{\parskip}{0pt}
 
 % set vertical spacing
-\newlength{\titleheight}   \setlength{\titleheight}{0.5in}
-\newlength{\secabovespace} \setlength{\secabovespace}{0pt}
-\newlength{\secbelowspace} \setlength{\secbelowspace}{8pt}
-\newlength{\headabovespace}\setlength{\headabovespace}{3.5pt}
+\newlength{\titleheight}   \setlength{\titleheight}{0.6in}
+\newlength{\secabovespace} \setlength{\secabovespace}{12pt}
+\newlength{\secbelowspace} \setlength{\secbelowspace}{6pt}
+\newlength{\headabovespace}\setlength{\headabovespace}{5pt}
 
 % set margin, footer geometry
 \RequirePackage{geometry}
