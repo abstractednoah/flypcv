@@ -1,6 +1,9 @@
-\NeedsTeXFormat{LaTeX2e}
+% created and maintained by Noah D. Ortiz at analyticalnoa@gmail.com.
+% component of the flypcv package.
+% public repo availabe at github.com/analyticalnoa/flypcv.
 
-\ProvidesClass{flypcv}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{flypcv}[2019/07/23]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
@@ -9,6 +12,7 @@
 \makeatletter
 
 % default font
+% ------------------------------------------------------------------------------
 \renewcommand{\familydefault}{\sfdefault}
 % ------------------------------------------------------------------------------
 
@@ -27,25 +31,27 @@
 }
 % ------------------------------------------------------------------------------
 
-% geometry, footer
+% geometry
 % ------------------------------------------------------------------------------
 % remove parindent, parskip
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 
-% set vertical lengths (space above said object)
-\newlength{\secvspace}
-\newlength{\headvspace}
-\setlength{\secvspace}{0pt}
-\setlength{\headvspace}{3.5pt}
+% set vertical spacing
+\newlength{\titleheight}   \setlength{\titleheight}{0.5in}
+\newlength{\secabovespace} \setlength{\secabovespace}{0pt}
+\newlength{\secbelowspace} \setlength{\secbelowspace}{8pt}
+\newlength{\headabovespace}\setlength{\headabovespace}{3.5pt}
 
 % set margin, footer geometry
 \RequirePackage{geometry}
 
 \setlength{\footskip}{0.2in}
 \geometry{margin=0.7in}
+% ------------------------------------------------------------------------------
 
-% configure footer
+% footer
+% ------------------------------------------------------------------------------
 \RequirePackage{fancyhdr, lastpage}
 
 \pagestyle{fancyplain}
@@ -71,10 +77,6 @@
 \newcommand{\email}[1]{\renewcommand{\@email}{#1}}
 \newcommand{\phone}[1]{\renewcommand{\@phone}{#1}}
 
-% title geometry
-\newlength{\titleheight}
-\setlength{\titleheight}{0.5in}
-
 % use \maketitle to place the title within document
 \renewcommand{\maketitle}{
   \begin{minipage}[t][\titleheight][c]{0.5\textwidth}
@@ -98,16 +100,13 @@
 % ------------------------------------------------------------------------------
 \RequirePackage{titlesec}
 
-% section geometry
-\newlength{\sectionsep}
-\setlength{\sectionsep}{8pt}
-
 % format section
 \titleformat{\section}
-  {\vspace{\secvspace}\Large\bfseries\uppercase}
+  {\Large\bfseries\uppercase}
   {}
-  {\sectionsep}
+  {0pt}
   {}[\titlerule]
+\titlespacing*{\section}{0pt}{\secabovespace}{\secbelowspace}
 % ------------------------------------------------------------------------------
 
 
@@ -162,23 +161,22 @@
 % ------------------------------------------------------------------------------
 
 % headcvitem - for items that act as headers / major items
-\newcvitem{headcvitem}{\bfseries}{}{ | }{}{\headvspace}
+\newcvitem{headcvitem}{\bfseries}{}{ | }{}{\headabovespace}
 
 % detailcvitem - for detail items under headcvitems
 \newcvitem{detailcvitem}{}{\itshape}{:\ }{}{0pt}
 
 % collectcvitem - for a brief one-line list of items with emphasised header
-\newcvitem{collectcvitem}{\bfseries}{}{\ }{}{\headvspace}
+\newcvitem{collectcvitem}{\bfseries}{}{\ }{}{\headabovespace}
 
 % blurbcvitem - cvitem with blurb in-line (not actually a true cvitem)
 \newcommand{\blurbcvitem}[2]{%%
-  \vspace{\headvspace}\par%%
+  \vspace{\headabovespace}\par%%
   {\bfseries#1}\ {\small\itshape#2}%%
 }
 
 % referencecvitem
-\newcvitem{referencecvitem}{\rmfamily}{\itshape}{,\ }{}{\headvspace}
-
+\newcvitem{referencecvitem}{\rmfamily}{\itshape}{,\ }{}{\headabovespace}
 % ------------------------------------------------------------------------------
 
 \makeatother

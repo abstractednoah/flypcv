@@ -7,8 +7,8 @@ feel free to have a look at [my cv repository](https://github.com/analyticalnoa/
 
 ## lengths
 
-* \secvspace (default 0) - space above sections
-* \headvspace (default 3.5pt) - space above head items
-* \footskip (default 0.2in) - read doc
 * \titleheight (default 0.5in) - height of title minipage
-* \sectionsep (default 8pt) - space after section title
+* \secabovespace (default 0) - space above sections
+* \secbelowspace (default 8pt) - space after section title
+* \headabovespace (default 3.5pt) - space above head items
+* \footskip (default 0.2in) - read doc
