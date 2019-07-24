@@ -40,8 +40,8 @@
 % set vertical spacing
 \newlength{\titleheight}   \setlength{\titleheight}{0.5in}
 \newlength{\secabovespace} \setlength{\secabovespace}{15pt}
-\newlength{\secbelowspace} \setlength{\secbelowspace}{6pt}
-\newlength{\headabovespace}\setlength{\headabovespace}{4pt}
+\newlength{\secbelowspace} \setlength{\secbelowspace}{10pt}
+\newlength{\headabovespace}\setlength{\headabovespace}{5pt}
 
 % set margin, footer geometry
 \RequirePackage{geometry}

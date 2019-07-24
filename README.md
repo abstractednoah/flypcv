@@ -67,9 +67,9 @@ left and contact info right)
 
 ## lengths
 
-* \titleheight (default 0.6in) - height of title minipage
-* \secabovespace (default 12pt) - space above sections
-* \secbelowspace (default 6pt) - space below section title
+* \titleheight (default 0.5in) - height of title minipage
+* \secabovespace (default 15pt) - space above sections
+* \secbelowspace (default 10pt) - space below section title
 * \headabovespace (default 5pt) - space above head items
 
 * \footskip (default 0.2in) - read doc, not rly sure anymore
