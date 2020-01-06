@@ -3,7 +3,7 @@
 % public repo availabe at github.com/analyticalnoa/flypcv.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{flypcv}[2019/07/23]
+\ProvidesClass{flypcv}[2020/01/06]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
