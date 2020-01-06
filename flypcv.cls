@@ -94,6 +94,12 @@
     }
   \end{minipage}
 }
+
+% rehdr - renew headers after geometry change
+\ifcsname f@nch@setoffs\endcsname\else
+    \let\f@nch@setoffs\fancy@setoffs
+\fi
+\newcommand{\rehdr}{\f@nch@setoffs}
 % ------------------------------------------------------------------------------
 
 % section definition
