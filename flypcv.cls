@@ -3,7 +3,7 @@
 % public repo availabe at github.com/analyticalnoa/flypcv.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{flypcv}[2020/01/06]
+\ProvidesClass{flypcv}[2020/01/08]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
@@ -79,7 +79,7 @@
 
 % use \maketitle to place the title within document
 \renewcommand{\maketitle}{
-  \begin{minipage}[t][\titleheight][c]{0.5\textwidth}
+  \begin{minipage}[t][\titleheight][t]{0.5\textwidth}
     \flushleft{{\Huge\bfseries
       \@author
     }}
@@ -87,7 +87,7 @@
       \@title
     }}
   \end{minipage}
-  \begin{minipage}[t][\titleheight][c]{0.5\textwidth}
+  \begin{minipage}[t][\titleheight][t]{0.5\textwidth}
     \flushright{
       \@location\\
       \href{mailto:\@email}{\@email} | \@phone
