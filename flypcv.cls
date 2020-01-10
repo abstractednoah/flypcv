@@ -21,7 +21,7 @@
 \RequirePackage[colorlinks, urlcolor=blue, linkcolor=black]{hyperref}
 % ------------------------------------------------------------------------------
 
-% conditionals
+% macros
 % ------------------------------------------------------------------------------
 \RequirePackage{xifthen}
 
@@ -33,6 +33,8 @@
 
 % geometry
 % ------------------------------------------------------------------------------
+\RequirePackage{calc}
+
 % remove parindent, parskip
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
@@ -134,13 +136,21 @@
 % generic line item with item, delim, info, and metadata.
 
 % default metaformat (given default since that column looks weird if not uniform)
-\newcommand{\@defaultmetaformat}{\rmfamily}
+\newcommand{\@defaultmetaformat}{\sffamily\small}
 \newcommand{\defaultmetaformat}[1]{\renewcommand{\@defaultmetaformat}{#1}}
 
-% \cvitem{item}{info}{meta}{delim}{infopunct}
-\newcommand{\cvitem}[5]{%%
+% bullet
+\newcommand{\@defaultbullet}{$\cdot$\ }
+\newlength{\bulletwidth} \setlength{\bulletwidth}{\widthof{\@defaultbullet}}
+\newcommand{\defaultbullet}[1]{
+    \renewcommand{\@defaultbullet}{#1}
+    \setlength{\bulletwidth}{\widthof{\@defaultbullet}}
+}
+
+% \cvitem{item}{info}{meta}{delim}{infopunct}{bullet}
+\newcommand{\cvitem}[6]{%%
   \par%%
-  #1%%
+  #6#1%%
   \thisifthat{#4}{#2}#2\thisifthat{#5}{#2}%%
   \thisifthat{\hfill}{#3}%%
   {\@defaultmetaformat#3}%%
@@ -153,12 +163,12 @@
 % ------------------------------------------------------------------------------
 % format a custom cvitem
 
-% \newcvitem{name}{itemformat}{infoformat}{delim}{infopunct}{vspace}
-\newcommand{\newcvitem}[6]{%%
+% \newcvitem{name}{itemformat}{infoformat}{delim}{infopunct}{vspace}{bullet}
+\newcommand{\newcvitem}[7]{%%
   \expandafter\newcommand\csname#1\endcsname[3]{%%
     \vspace{#6}%%
     \cvitem{{#2##1}}{{#3##2}}{##3}%%
-      {\thisifthat{#4}{##2}}{\thisifthat{#5}{##2}}%%
+      {\thisifthat{#4}{##2}}{\thisifthat{#5}{##2}}{#7}%%
   }
 }
 
@@ -172,6 +182,7 @@
 
 % detailcvitem - for detail items under headcvitems
 \newcvitem{detailcvitem}{}{\itshape}{:\ }{}{0pt}
+    {\hspace{-0\bulletwidth}\@defaultbullet}
 
 % collectcvitem - for a brief one-line list of items with emphasised header
 \newcvitem{collectcvitem}{\bfseries}{}{\ }{}{\headabovespace}
