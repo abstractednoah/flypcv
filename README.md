@@ -3,6 +3,11 @@ A simple LaTeX documentclass for resumes.
 
 Public repository at [GitHub](https://github.com/abstractednoah/flypcv).
 
+Note that this code isn't particularly stable.
+Style, formatting, default values might change at any time.
+Best efforts will be made to maintain backwards-compatibility (from version
+2020/12/07).
+
 
 ## Required Packages
 
