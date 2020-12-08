@@ -253,6 +253,9 @@
 
 % 'fcvBlurbItem'
 %   Item with blurb in-line (not actually a true 'fcvItem').
+%   Arguments:
+%       Item title.
+%       Item blurb.
 \newcommand{\fcvBlurbItem}[2]{%%
     \vspace{\fcvSpaceAboveHeader}\par%%
     {\bfseries#1}\ {\small\itshape#2}%%
