@@ -1,75 +1,143 @@
 # flypcv
-A simple, clean, and dynamic LaTeX documentclass for resume aka cv.
+A simple LaTeX documentclass for resumes.
 
-Public repository at [GitHub](https://github.com/analyticalnoa/flypcv).
+Public repository at [GitHub](https://github.com/abstractednoah/flypcv).
 
-Feel free to have a look at 
-[my cv](https://github.com/analyticalnoa/analyticalnoa-cv) for a sample use of
-this class.  
 
-## Dependencies
+## Required Packages
 
-This class makes use of the standard article.cls file, which should be installed
-by default. In addition, the following packages are required.
+This class makes use of the standard `article.cls`, which should be installed by
+default. In addition, the following packages are required:
 
-* colorlinks.sty
+* hyperref.sty
 * xifthen.sty
+* calc.sty
 * geometry.sty
 * fancyhdr.sty
 * lastpage.sty
 * titlesec.sty
 
-All of these should be available over at [ctan](https://ctan.org) or via your
-system's package manager (hint: use apt-file on Debian systems).
+All of these are available over at [ctan](https://ctan.org) or via your system's
+package manager (hint: use `apt-file` on Debian systems).
+
 
 ## Installation
-For a portable installation, simply include the [flypcv.sty](flypcv.sty) file in
-the same directory as your cv tex document.
-To install the documentclass system-wide, place [flypcv.sty](flypcv.sty)
-anywhere within your `texmf/tex/latex` directory and then run
+
+For portable installation, simply include the [flypcv.sty](flypcv.sty) file in
+the same directory as your tex document.
+To install the documentclass site-wide, place [flypcv.sty](flypcv.sty) anywhere
+within your `texmf/tex/latex` directory and then run
 
     texhash path/to/texmf
 
-to update your package index. 
+to update your package index.
 
-Also be sure you have all of the [required packages](#Dependencies) installed.
 
-## Use
+## Usage
 
-To implement this class, create a tex document (say *cv.tex*) and
-load [flypcv.sty](flypcv.sty) with
+To implement this class, create a tex document and load the class with
 
     \documentclass{flypcv}
 
-You can begin specifying your header information in the preamble with the
-`\author`, `\title`, `\location`, `\email`, and `\phone` commands. Then
-`\begin{document}` and start the document with
+Then [configure](#configuration) the package as desired in the preamble, and
+place
 
-    \maketitle,
-    
-this will construct the cv heading using the information specified in the
-preamble.
+    \maketitle
 
-Then you can start entering your resume contents. See
-[features][#Features]) below for a list of all the available commands. You're
-more than welcome to implement them as you see fit, but I had the following
-structure in mind: Use `\section` to seperate your resume into the various
-catagories such as "Education", "Employement", etc. Use `\headcvitem` for your
-actual resume items such as "X Title at X Employer". And use `\detailcvitem` to
-add the details to those head items, e.g. "Did such and such...". Additional
-`cvitem` commands are also defined for things like references, etc; see below.
-
-## Layout
-
-This documentclass provides for a simple layout with a two-column title (name
-left and contact info right)
+directly after `\begin{document}` to construct the cv heading. See
+[features](#features) for a list of available "Item" commands, which are used to
+create formatted lines in your resume.
+You can also [create your own Items](#custom-items).
 
 
-## lengths
+## Configuration
 
-* \titleheight (default 0.5in) - height of title minipage
-* \secabovespace (default 15pt) - space above sections
-* \secbelowspace (default 10pt) - space below section title
-* \headabovespace (default 5pt) - space above head items
+The package provides the following fields to be used when creating the title:
 
-* \footskip (default 0.2in) - read doc, not rly sure anymore
+* `\author`
+* `\title` - Occupation, major, position, etc.
+* `\location`
+* `\email` - Formatted nicely as a hyperlink.
+* `\phone`
+
+The assumption is that all of these fields are nonempty.
+If you don't want to use a particular field, you might want to create your own
+`\maketitle` command; see the source code.
+
+The package makes the following alterations to default geometry:
+
+* Set `\parindent` and `\parskip` lengths to zero.
+* Change the `\footskip` length and geometry package's `margin` option from
+  their default values; see source code for exact values.
+* Set `\headrulewidth` and `\footrulewidth` to zero.
+
+In addition, flypcv defines the following lengths:
+
+* `\fcvTitleHeight` - Height of the title box.
+* `\fcvSpaceAboveSection` - Vertical space before section headings.
+* `\fcvSpaceBelowSection` - Vertical space after section headings.
+* `\fcvSpaceAboveHeader` - Vertical space above `\fcvHeadItem`.
+
+See the source code for default lengths.
+Shrinking these can help fit a tight resume onto one page, but make sure nothing
+gets cut off!
+
+The package's bullet character can be set with `\fcvBullet`; see the source code
+for the default character.
+
+
+## Features
+
+Out of the box, flypcv provides the following features, which are enough for a
+simple resume. See the [next section](#custom-items) for how to create your own
+Items.
+
+### Title
+
+As metioned, the `\maketitle` command places the title, using the fields listed
+above.
+
+### Sections
+
+The package formats section headings; use `\section` as usual.
+
+### Item Commands
+
+Item commands are meant to print a single line (or wrap to the next if you have
+too much text!) of resume information.
+
+They take the following three mandatory arguments (in the following order):
+
+* _title_ - The primary name of the line item, to be bolded and placed at the
+  begining of the line. You choose your own consistent format, but for example,
+  could be "Librarian" or "Engineer at Intel" or whatever you want to be the
+  eye-catcher of the line.
+* _info_ - Additional brief info to be placed on the same line right after
+  _title_. For instance, GPA, employer name, or hours spent per week.
+* _metadata_ - Any metadata to be placed flush to the right side of the page,
+  such as years spent on the job, or the phone number of a reference.
+
+Here are the commands:
+
+* `\fcvHeadItem`
+* `\fcvDetailItem`
+* `\fcvCollection`
+* `\fcvReferenceItem`
+
+They can be used however you want, depending on how you want your cv to look.
+For example, I use `\fcvHeadItem` for job headings, and then `\fcvDetailItem`
+for brief explanations of my role, accomplishments, etc. The `\fcvReferenceItem`
+is supposed to be used for references.
+
+### Other Commands
+
+The `\fcvBlurb` command takes one argument and formats it as a simple italic
+paragraph for brief descriptions or standalones such as your "objective".
+
+The `\fcvBlurbItem` takes two arguments: _title_ and _blurb_.
+
+
+## Custom Items
+
+The `\fcvNewItem` can be used to create your own line Item commands.
+See the source code for usage.
