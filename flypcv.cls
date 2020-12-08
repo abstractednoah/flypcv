@@ -107,7 +107,7 @@
 \AL{}
 \renewcommand{\maketitle}{
     \begin{minipage}[t][\fcvTitleHeight][t]{0.5\textwidth}
-        \flushleft{{\Huge\bfseries%%
+        \flushleft{{\huge\bfseries%%
             \@author%%
         }}
         \vspace{-5pt}\flushleft{{\itshape%%
@@ -137,7 +137,7 @@
 % Format sections.
 %
 \titleformat{\section}
-    {\Large\bfseries\uppercase}
+    {\large\bfseries\uppercase}
     {}
     {0pt}
     {}
