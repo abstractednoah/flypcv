@@ -230,7 +230,7 @@
 
 % 'fcvHeadItem'
 %   For items that act as headers / major items.
-\fcvNewItem{fcvHeadItem}{\bfseries}{}{ | }{}{\fcvSpaceAboveHeader}
+\fcvNewItem{fcvHeadItem}{\bfseries}{}{ | }{}{\fcvSpaceAboveHeader}{}
 
 
 % 'fcvDetailItem'
@@ -248,7 +248,7 @@
 
 % 'fcvCollection'
 %   For a brief one-line list of items with emphasised header.
-\fcvNewItem{fcvCollection}{\bfseries}{}{\ }{}{\fcvSpaceAboveHeader}
+\fcvNewItem{fcvCollection}{\bfseries}{}{\ }{}{\fcvSpaceAboveHeader}{}
 
 
 % 'fcvBlurbItem'
@@ -261,4 +261,10 @@
 
 % 'fcvReferenceItem'
 %   A reference line (e.g. previous employer, etc.).
-\fcvNewItem{fcvReferenceItem}{\rmfamily}{\itshape}{,\ }{}{\fcvSpaceAboveHeader}
+\fcvNewItem{fcvReferenceItem}
+    {\rmfamily}
+    {\itshape}
+    {,\ }
+    {}
+    {\fcvSpaceAboveHeader}
+    {}
