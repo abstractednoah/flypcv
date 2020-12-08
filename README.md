@@ -23,9 +23,9 @@ package manager (hint: use `apt-file` on Debian systems).
 
 ## Installation
 
-For portable installation, simply include the [flypcv.sty](flypcv.sty) file in
+For portable installation, simply include the [`flypcv.cls`](flypcv.cls) file in
 the same directory as your tex document.
-To install the documentclass site-wide, place [flypcv.sty](flypcv.sty) anywhere
+To install the documentclass site-wide, place `flypcv.cls` anywhere
 within your `texmf/tex/latex` directory and then run
 
     texhash path/to/texmf
