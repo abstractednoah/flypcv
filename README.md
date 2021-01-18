@@ -81,7 +81,8 @@ In addition, flypcv defines the following lengths:
 * `\fcvTitleHeight` - Height of the title box.
 * `\fcvSpaceAboveSection` - Vertical space before section headings.
 * `\fcvSpaceBelowSection` - Vertical space after section headings.
-* `\fcvSpaceAboveHeader` - Vertical space above `\fcvHeadItem`.
+* `\fcvSpaceAboveHeader` - Vertical space above `\fcvHeadItem`, `\fcvBlurb`.
+* `\fcvSpaceAboveDetail` - Vertical space above `\fcvHeadDetail`.
 
 See the source code for default lengths.
 Shrinking these can help fit a tight resume onto one page, but make sure nothing

@@ -60,6 +60,7 @@
 \newlength{\fcvSpaceAboveSection}   \setlength{\fcvSpaceAboveSection}{15pt}
 \newlength{\fcvSpaceBelowSection}   \setlength{\fcvSpaceBelowSection}{10pt}
 \newlength{\fcvSpaceAboveHeader}    \setlength{\fcvSpaceAboveHeader}{5pt}
+\newlength{\fcvSpaceAboveDetail}    \setlength{\fcvSpaceAboveDetail}{1pt}
 
 % Set margin and footer geometry.
 \setlength{\footskip}{0.2in}
@@ -71,13 +72,17 @@
 %
 
 % Set 'fancyhdr' pagestyle.
+\RequirePackage{datetime2}
+\DTMusemodule{english}{en-NZ}
+\DTMsetstyle{en-NZ}
+
 \pagestyle{fancyplain}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
 \fancyhf{}
 \fancyfoot[R]{\scriptsize \thepage\ \textit{of}\ \pageref{LastPage}}
-\fancyfoot[L]{\itshape\scriptsize curriculum vitae}
+\fancyfoot[L]{\itshape\scriptsize Compiled on \today}
 
 
 %
@@ -155,7 +160,7 @@
 % 'fcvBlurb'
 %   A simple italic paragraph for brief descriptions below main items or as
 %   standalones.
-\newcommand{\fcvBlurb}[1]{\par{\itshape#1}}
+\newcommand{\fcvBlurb}[1]{\vspace{\fcvSpaceAboveHeader}\par{\itshape#1}}
 
 
 % Depricated for now.
@@ -241,7 +246,7 @@
     {\itshape}
     {:\ }
     {}
-    {0pt}
+    {\fcvSpaceAboveDetail}
     {\hspace{-0\fcvBulletWidth}\@fcvBullet}
 \AO{}
 
